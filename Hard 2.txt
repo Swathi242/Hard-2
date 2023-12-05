@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class ShortestPalindrome {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String s = scanner.nextLine();
+
+        String shortestPalindrome = shortestPalindrome(s);
+
+        System.out.println("Shortest Palindrome: " + shortestPalindrome);
+
+
+        scanner.close();
+    }
+
+    private static String shortestPalindrome(String s) {
+        if (s == null || s.isEmpty()) {
+            return "";
+        }
+
+        int n = s.length();
+        String reversed = new StringBuilder(s).reverse().toString();
+
+        for (int i = 0; i < n; i++) {
+            if (s.substring(0, n - i).equals(reversed.substring(i))) {
+                return reversed.substring(0, i) + s;
+            }
+        }
+
+        return "";  
+    }
+}
